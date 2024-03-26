@@ -1,0 +1,7 @@
+Django==5.0.1
+djangorestframework==3.14.0
+environs==10.3.0
+psycopg2-binary
+ipython==8.20.0
+celery==5.3.6
+redis==3.5.3
