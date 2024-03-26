@@ -3,7 +3,7 @@ from celery.exceptions import SoftTimeLimitExceeded
 
 from common.communication import EmailSender, SmsSender
 from common.decorators import count_queries
-from joinup.celery import app
+from config.celery import app
 
 logger = logging.getLogger(__name__)
 

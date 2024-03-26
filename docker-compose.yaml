@@ -17,7 +17,7 @@ services:
 
   celery:
     container_name: celery
-    command: celery -A joinup.celery worker -l DEBUG --max-memory-per-child=300000
+    command: celery -A config.celery worker -l DEBUG --max-memory-per-child=300000
     build: backend
     env_file:
       - ./.env

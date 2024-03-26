@@ -22,8 +22,8 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Copies the base.txt file from your Docker client's current directory to /app in the Docker image.
-COPY joinup/requirements/base.txt /app
-COPY joinup/requirements/dev.txt /app
+COPY config/requirements/base.txt /app
+COPY config/requirements/dev.txt /app
 
 # Installs the Python dependencies that are listed in the base.txt file.
 # The --no-cache-dir option tells pip to disable its cache, which reduces the size of the image.
