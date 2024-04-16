@@ -5,9 +5,7 @@ from common.models import TimeStampedModel
 from user.managers import CustomUserManager
 
 
-class User(AbstractBaseUser,
-           PermissionsMixin,
-           TimeStampedModel):
+class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
     username = None
     email = models.EmailField(unique=True)
@@ -17,5 +15,5 @@ class User(AbstractBaseUser,
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
