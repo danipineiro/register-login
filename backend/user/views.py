@@ -2,8 +2,7 @@ import logging
 
 from rest_framework import permissions
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
 
 from .models import User
 from .serializers import RegisterUserSerializer, ProfileUserSerializer
@@ -18,10 +17,9 @@ class UserSignUpView(generics.CreateAPIView):
     serializer_class = RegisterUserSerializer
 
 
-class UserProfileView(APIView):
+class UserProfileView(RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = ProfileUserSerializer
 
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        serializer = ProfileUserSerializer(user)
-        return Response(serializer.data)
+    def get_object(self):
+        return self.request.user
