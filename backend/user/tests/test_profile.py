@@ -2,7 +2,7 @@ import pytest
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from user.tests.factories import PassengerFactory
+from user.tests.factories import UserFactory
 
 
 @pytest.mark.django_db
@@ -14,7 +14,7 @@ def test_profile_endpoint():
     when accessed with a valid JWT token.
 
     Steps:
-    1. Create a user using the PassengerFactory.
+    1. Create a user using the UserFactory.
     2. Generate a JWT token for the created user.
     3. Set the JWT token in the API client's authorization header.
     4. Send a GET request to the profile endpoint.
@@ -25,7 +25,7 @@ def test_profile_endpoint():
     - The response status code should be 200.
     - The email in the response data should match the user's email.
     """
-    user = PassengerFactory()
+    user = UserFactory()
     refresh = RefreshToken.for_user(user)
     access_token = str(refresh.access_token)
 
