@@ -8,11 +8,10 @@ import {AuthService} from "./services/auth.service";
 import {MenuComponent} from "./components/menu/menu.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSlideToggleModule, MatToolbar, MatIcon, MenuComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [CommonModule, RouterOutlet, MatSlideToggleModule, MatToolbar, MatIcon, MenuComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'angular-docker';

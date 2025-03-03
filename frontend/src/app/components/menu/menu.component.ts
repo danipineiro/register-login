@@ -8,15 +8,14 @@ import {UserService} from "../../services/user.service";
 import {CurrentUserDTO} from "../../models/current-user-dto";
 
 @Component({
-  selector: 'app-menu',
-  standalone: true,
-  imports: [
-    MatIcon,
-    MatToolbar,
-    NgIf
-  ],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+    selector: 'app-menu',
+    imports: [
+        MatIcon,
+        MatToolbar,
+        NgIf
+    ],
+    templateUrl: './menu.component.html',
+    styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnInit {
 

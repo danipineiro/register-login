@@ -17,25 +17,24 @@ import {RegisterDTO} from "../../../models/register-dto";
 import {AuthService} from "../../../services/auth.service";
 
 @Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [
-    MatFormField,
-    MatSelect,
-    MatOption,
-    MatError,
-    MatDialogActions,
-    MatLabel,
-    MatDialogContent,
-    MatDialogTitle,
-    FormsModule,
-    MatInput,
-    MatButton,
-    ReactiveFormsModule,
-    NgIf
-  ],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+    selector: 'app-signup',
+    imports: [
+        MatFormField,
+        MatSelect,
+        MatOption,
+        MatError,
+        MatDialogActions,
+        MatLabel,
+        MatDialogContent,
+        MatDialogTitle,
+        FormsModule,
+        MatInput,
+        MatButton,
+        ReactiveFormsModule,
+        NgIf
+    ],
+    templateUrl: './signup.component.html',
+    styleUrl: './signup.component.scss'
 })
 export class SignupComponent implements OnInit {
 
