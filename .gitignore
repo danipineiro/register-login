@@ -114,3 +114,7 @@ dmypy.json
 .pyre/
 
 postgres-data/
+
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/

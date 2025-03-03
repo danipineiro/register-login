@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <mat-form-field>
+        <input matInput placeholder="Email" name="email" formControlName="email" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">Log In</button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-flat-button color="secondary" (click)="openSingUpDialog()">Create new account</button>
+    </form>
+  </mat-card-content>
+</mat-card>

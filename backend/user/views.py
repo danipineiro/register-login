@@ -1,9 +1,7 @@
 import logging
 
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework import generics
-from rest_framework.generics import RetrieveAPIView
-from rest_framework.response import Response
 
 from .models import User
 from .serializers import RegisterUserSerializer, ProfileUserSerializer
@@ -17,16 +15,8 @@ class UserSignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterUserSerializer
 
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return Response(
-                {"error": "You are already logged in."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-        return super().dispatch(request, *args, **kwargs)
 
-
-class UserProfileView(RetrieveAPIView):
+class UserProfileView(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ProfileUserSerializer
 

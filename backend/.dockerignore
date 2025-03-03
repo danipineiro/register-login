@@ -1,0 +1,28 @@
+# Ignorar archivos y carpetas de Python
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+*.log
+*.sqlite3
+*.db
+
+# Ignorar dependencias de Python
+venv/
+env/
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignorar archivos de configuración y credenciales sensibles
+.env
+*.pem
+config/settings/local.py
+
+# Ignorar archivos de Git y editores
+.git/
+.gitignore
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project

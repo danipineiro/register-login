@@ -1,0 +1,17 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  black:
+    uses: ./.github/workflows/_black.yml
+    with:
+      ref: ${{ github.ref }}
+
+  test:
+    uses: ./.github/workflows/_pytest.yml
+    with:
+      ref: ${{ github.ref }}
