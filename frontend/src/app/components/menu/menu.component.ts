@@ -9,6 +9,7 @@ import {CurrentUserDTO} from "../../models/current-user-dto";
 
 @Component({
     selector: 'app-menu',
+    standalone: true,
     imports: [
         MatIcon,
         MatToolbar,
