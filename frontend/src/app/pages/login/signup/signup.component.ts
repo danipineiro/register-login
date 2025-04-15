@@ -1,6 +1,5 @@
 import {Component,Inject, OnInit} from '@angular/core';
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatOption, MatSelect} from "@angular/material/select";
 import {MatDialogActions, MatDialogContent, MatDialogTitle, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {
   AbstractControl,
@@ -21,11 +20,8 @@ import {AuthService} from "../../../services/auth.service";
     standalone: true,
     imports: [
         MatFormField,
-        MatSelect,
-        MatOption,
         MatError,
         MatDialogActions,
-        MatLabel,
         MatDialogContent,
         MatDialogTitle,
         FormsModule,
