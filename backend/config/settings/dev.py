@@ -28,3 +28,6 @@ SIMPLE_JWT = {
 
 MAIL_PROVIDER_KEY = os.environ.get("MAIL_PROVIDER_KEY", None)
 SMS_PROVIDER_KEY = os.environ.get("SMS_PROVIDER_KEY", None)
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "demo@example.com"
