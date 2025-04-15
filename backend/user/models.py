@@ -7,16 +7,15 @@ from user.managers import CustomUserManager
 
 class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
 
-    username = None
-    email = models.EmailField(unique=True)
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = "username"
+
+    username = models.CharField(max_length=150, unique=True)
+    email = models.EmailField(unique=True, null=True, blank=True)
     email_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
-    objects = CustomUserManager()
-
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
-
     def __str__(self):
-        return self.email
+        return self.username
