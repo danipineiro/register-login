@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {map, Observable, tap} from 'rxjs';
 import {LoginDTO} from "../models/login-dto";
 import {RegisterDTO} from "../models/register-dto";
 
@@ -31,18 +31,17 @@ export class AuthService {
     this.loggedChanged$.emit(false);
   }
 
-  refreshToken() {
+  refreshToken(): Observable<string> {
     const body = {
       refresh: localStorage.getItem('refresh')
-    }
-    this.http.post(`${this.apiUrl}/token/refresh/`, body).subscribe({
-      next: (response: any) => {
+    };
+
+    return this.http.post<{ access: string }>(`${this.apiUrl}/token/refresh/`, body).pipe(
+      tap(response => {
         this.setAccessToken(response.access);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+      }),
+      map(response => response.access)
+    );
   }
 
   getAccessToken() {
