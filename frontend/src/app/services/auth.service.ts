@@ -3,13 +3,15 @@ import {HttpClient} from '@angular/common/http';
 import {map, Observable, tap} from 'rxjs';
 import {LoginDTO} from "../models/login-dto";
 import {RegisterDTO} from "../models/register-dto";
+import {environment} from "../../environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/v1/auth';
+  private apiUrl = `${environment.host}api/v1/auth`;
 
   loggedChanged$ = new EventEmitter<boolean>();
 

@@ -31,7 +31,7 @@ def test_profile_endpoint():
 
     client = APIClient()
     client.credentials(HTTP_AUTHORIZATION=f"Bearer {access_token}")
-    response = client.get("/api/v1/profile/")
+    response = client.get("/api/v1/auth/user/")
 
     assert response.status_code == 200
     assert response.data["email"] == user.email
@@ -42,18 +42,18 @@ def test_profile_endpoint_without_jwt():
     """
     Test the profile endpoint without a JWT token.
 
-    This test verifies that the profile endpoint returns a 404 status code
+    This test verifies that the profile endpoint returns a 401 status code
     when accessed without a JWT token.
 
     Steps:
     1. Initialize the API client without setting any authorization headers.
     2. Send a GET request to the profile endpoint.
-    3. Assert that the response status code is 404.
+    3. Assert that the response status code is 401.
 
     Assertions:
-    - The response status code should be 404.
+    - The response status code should be 401
     """
     client = APIClient()
-    response = client.get("/api/profile/")
+    response = client.get("/api/v1/auth/user/")
 
-    assert response.status_code == 404
+    assert response.status_code == 401
