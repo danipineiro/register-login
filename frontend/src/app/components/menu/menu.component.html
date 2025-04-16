@@ -2,11 +2,13 @@
   <span>Title</span>
   <span class="example-spacer"></span>
 
+  @if (currentUser) {
+    <button mat-button [matMenuTriggerFor]="menu" aria-label="User menu">
+      <mat-icon>person</mat-icon>
+      {{ currentUser.username }}
+    </button>
+  }
 
-  <button mat-button [matMenuTriggerFor]="menu">
-    <mat-icon>person</mat-icon>
-    {{ currentUser?.username }}
-  </button>
   <mat-menu #menu="matMenu">
 
     <button mat-menu-item>
