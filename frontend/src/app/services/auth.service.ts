@@ -9,7 +9,7 @@ import {RegisterDTO} from "../models/register-dto";
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/v1';
+  private apiUrl = 'http://localhost:8000/api/v1/auth';
 
   loggedChanged$ = new EventEmitter<boolean>();
 
@@ -17,11 +17,11 @@ export class AuthService {
   }
 
   login(loginDTO: LoginDTO): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signin/`, loginDTO);
+    return this.http.post(`${this.apiUrl}/login/`, loginDTO);
   }
 
   register(registerDTO: RegisterDTO): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup/`, registerDTO);
+    return this.http.post(`${this.apiUrl}/registration/`, registerDTO);
   }
 
   logout() {
