@@ -2,13 +2,22 @@
   <span>Title</span>
   <span class="example-spacer"></span>
 
-   <span class="email-display">{{ currentUser?.email }}</span>
 
-  <button mat-icon-button
-          class="example-icon"
-          aria-label="Example icon-button with share icon"
-          (click)="logout()"
-  >
-    <mat-icon>logout</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>person</mat-icon>
+    {{ currentUser?.username }}
   </button>
+  <mat-menu #menu="matMenu">
+
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+
+  </mat-menu>
 </mat-toolbar>

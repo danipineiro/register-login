@@ -5,14 +5,21 @@ import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {CurrentUserDTO} from "../../models/current-user-dto";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
     selector: 'app-menu',
     standalone: true,
-    imports: [
-        MatIcon,
-        MatToolbar,
-    ],
+  imports: [
+    MatIcon,
+    MatToolbar,
+    MatButton,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatIconButton,
+  ],
     templateUrl: './menu.component.html',
     styleUrl: './menu.component.scss'
 })
