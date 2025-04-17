@@ -147,9 +147,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-MAIL_PROVIDER_KEY = None
-SMS_PROVIDER_KEY = None
-
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", default="redis://redis:6379/0")
 
 CORS_ALLOW_ALL_ORIGINS = True
