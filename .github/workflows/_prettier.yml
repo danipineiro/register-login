@@ -20,7 +20,9 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
+        working-directory: frontend
         run: npm ci
 
       - name: Run Prettier check
+        working-directory: frontend
         run: npx prettier --check .
