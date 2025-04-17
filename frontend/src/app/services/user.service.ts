@@ -1,26 +1,24 @@
-import {Injectable} from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import {Observable, of, tap} from "rxjs";
-import {environment} from "../../environments/environment";
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private apiUrl = `${environment.host}api/v1/auth/`;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-getCurrentUser(): Observable<any> {
+  getCurrentUser(): Observable<any> {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
       return of(JSON.parse(currentUser));
     } else {
-      return this.http.get(`${this.apiUrl}user/`).pipe(
-        tap(user => localStorage.setItem('currentUser', JSON.stringify(user)))
-      );
+      return this.http
+        .get(`${this.apiUrl}user/`)
+        .pipe(tap((user) => localStorage.setItem('currentUser', JSON.stringify(user))));
     }
   }
 }
