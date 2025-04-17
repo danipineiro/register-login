@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = `${environment.host}api/v1/`;
+  private apiUrl = `${environment.host}api/v1/auth/`;
 
   constructor(private http: HttpClient) {
   }
@@ -18,7 +18,7 @@ getCurrentUser(): Observable<any> {
     if (currentUser) {
       return of(JSON.parse(currentUser));
     } else {
-      return this.http.get(`${this.apiUrl}profile/`).pipe(
+      return this.http.get(`${this.apiUrl}user/`).pipe(
         tap(user => localStorage.setItem('currentUser', JSON.stringify(user)))
       );
     }

@@ -18,3 +18,7 @@ LOGGING = {
 
 MAIL_PROVIDER_KEY = os.environ.get("MAIL_PROVIDER_KEY", "production_key")
 SMS_PROVIDER_KEY = os.environ.get("SMS_PROVIDER_KEY", "production_key")
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False

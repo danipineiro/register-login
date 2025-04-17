@@ -1,6 +1,5 @@
 import {Component,Inject, OnInit} from '@angular/core';
-import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatOption, MatSelect} from "@angular/material/select";
+import {MatError, MatFormField} from "@angular/material/form-field";
 import {MatDialogActions, MatDialogContent, MatDialogTitle, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {
   AbstractControl,
@@ -8,6 +7,7 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  ValidationErrors,
   Validators
 } from "@angular/forms";
 import {MatInput} from "@angular/material/input";
@@ -21,11 +21,8 @@ import {AuthService} from "../../../services/auth.service";
     standalone: true,
     imports: [
         MatFormField,
-        MatSelect,
-        MatOption,
         MatError,
         MatDialogActions,
-        MatLabel,
         MatDialogContent,
         MatDialogTitle,
         FormsModule,
@@ -50,18 +47,18 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
+      username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      password1: new FormControl('', Validators.required),
       password2: new FormControl('', Validators.required)
     }, [this.checkPasswords]);
   }
 
-  checkPasswords(group: AbstractControl) {
-    if (group.get('password')?.value !== group.get('password2')?.value) {
-      return {notSame: true};
-    }
-    return null;
-  }
+  checkPasswords(group: AbstractControl): ValidationErrors | null {
+  const pass = group.get('password1')?.value;
+  const confirmPass = group.get('password2')?.value;
+  return pass === confirmPass ? null : { notSame: true };
+}
 
   closeDialog(): void {
     this.dialogRef.close();

@@ -1,15 +1,17 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {map, Observable, tap} from 'rxjs';
 import {LoginDTO} from "../models/login-dto";
 import {RegisterDTO} from "../models/register-dto";
+import {environment} from "../../environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/v1';
+  private apiUrl = `${environment.host}api/v1/auth`;
 
   loggedChanged$ = new EventEmitter<boolean>();
 
@@ -17,11 +19,11 @@ export class AuthService {
   }
 
   login(loginDTO: LoginDTO): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signin/`, loginDTO);
+    return this.http.post(`${this.apiUrl}/login/`, loginDTO);
   }
 
   register(registerDTO: RegisterDTO): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup/`, registerDTO);
+    return this.http.post(`${this.apiUrl}/registration/`, registerDTO);
   }
 
   logout() {
@@ -31,18 +33,17 @@ export class AuthService {
     this.loggedChanged$.emit(false);
   }
 
-  refreshToken() {
+  refreshToken(): Observable<string> {
     const body = {
       refresh: localStorage.getItem('refresh')
-    }
-    this.http.post(`${this.apiUrl}/token/refresh/`, body).subscribe({
-      next: (response: any) => {
+    };
+
+    return this.http.post<{ access: string }>(`${this.apiUrl}/token/refresh/`, body).pipe(
+      tap(response => {
         this.setAccessToken(response.access);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+      }),
+      map(response => response.access)
+    );
   }
 
   getAccessToken() {
