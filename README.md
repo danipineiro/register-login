@@ -1,21 +1,41 @@
-# Plantilla de proyecto Django: registro y login de usuarios
-Este es un proyecto de Django que se ejecuta en un entorno Docker.
+# 🧪 Plantilla para aplicaciones fullstack con Django, Angular y Docker
 
-Se trata de una plantilla básica para un proyecto Django, donde ya se ha implementado el registro y el inicio de sesión de usuarios.
+Este repositorio es una plantilla lista para usar que integra **Django** (backend) y **Angular con Angular Material** (frontend), todo orquestado con **Docker** y **Docker Compose**. Ideal para iniciar proyectos con autenticación de usuarios ya implementada (registro y login).
 
-## Requisitos
+Incluye:
 
-- Docker
-- Docker Compose
+- 🔧 Backend con Django + Django REST Framework
+- 🎨 Frontend con Angular + Angular Material
+- 🐳 Entorno Dockerizado
+- 🐘 Base de datos PostgreSQL
+- ✅ Workflows de CI con GitHub Actions
 
-## Configuración inicial
+---
 
-1. Copia el archivo `.env.example` a `.env` y actualiza las variables de entorno según sea necesario.
+## 🚀 Requisitos
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+---
+
+## ⚙️ Configuración inicial
+
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/danipineiro/register-login
+    cd register-login
+    ```
+
+2. Copia el archivo de variables de entorno y edítalo si es necesario:
     ```bash
     cp .env.example .env
     ```
-   
-2. Construye y levanta los servicios de Docker.
+
+3. Construye y levanta los contenedores:
     ```bash
     docker-compose up --build
     ```
+
+4. Accede al frontend en [http://localhost:4200](http://localhost:4200)  
+   El backend estará disponible en [http://localhost:8000](http://localhost:8000)
