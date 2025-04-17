@@ -11,6 +11,11 @@ jobs:
     with:
       ref: ${{ github.ref }}
 
+  prettier:
+    uses: ./.github/workflows/_prettier.yml
+    with:
+      ref: ${{ github.ref }}
+
   test:
     uses: ./.github/workflows/_pytest.yml
     with:
