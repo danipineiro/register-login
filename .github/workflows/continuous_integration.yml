@@ -22,6 +22,6 @@ jobs:
       ref: ${{ github.ref }}
 
   docker_build:
-    uses: ./.github/workflows/_docker-build-check.yaml
+    uses: ./.github/workflows/_docker-build-check.yml
     with:
       ref: ${{ github.ref }}
