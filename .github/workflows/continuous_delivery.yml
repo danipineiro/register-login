@@ -21,8 +21,13 @@ jobs:
     with:
       ref: ${{ github.ref }}
 
+  prettier:
+    uses: ./.github/workflows/_prettier.yml
+    with:
+      ref: ${{ github.ref }}
+
   deploy:
-    needs: [black, test]
+    needs: [black, test, prettier]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
