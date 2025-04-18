@@ -2,7 +2,7 @@ version: '3.8'
 services:
   backend_test:
     build:
-      context: .
+      context: ./backend
       dockerfile: backend/Dockerfile
     command: >
       sh -c "python manage.py migrate &&
