@@ -2,40 +2,67 @@
 <div mat-dialog-content>
   <form [formGroup]="signupForm">
     <mat-form-field>
-      <input matInput placeholder="Username" formControlName="username" required>
-      <mat-error *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched">
+      <input matInput placeholder="Username" formControlName="username" required />
+      <mat-error
+        *ngIf="
+          signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched
+        "
+      >
         Please provide a valid username
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email" required>
-      <mat-error *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched">
+      <input matInput placeholder="Email" formControlName="email" required />
+      <mat-error
+        *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched"
+      >
         Please provide a valid email address
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" placeholder="Password" formControlName="password1" required>
-      <mat-error *ngIf="signupForm.get('password1')?.hasError('required') && signupForm.get('password1')?.touched">
+      <input matInput type="password" placeholder="Password" formControlName="password1" required />
+      <mat-error
+        *ngIf="
+          signupForm.get('password1')?.hasError('required') && signupForm.get('password1')?.touched
+        "
+      >
         Please provide a valid password
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" placeholder="Confirm Password" formControlName="password2" required>
-      <mat-error *ngIf="signupForm.get('password2')?.hasError('required') && signupForm.get('password2')?.touched">
+      <input
+        matInput
+        type="password"
+        placeholder="Confirm Password"
+        formControlName="password2"
+        required
+      />
+      <mat-error
+        *ngIf="
+          signupForm.get('password2')?.hasError('required') && signupForm.get('password2')?.touched
+        "
+      >
         Please provide a valid password
       </mat-error>
     </mat-form-field>
 
-    <mat-error *ngIf="signupForm.hasError('notSame') && signupForm.get('password1')?.dirty && signupForm.get('password2')?.dirty">
-        Passwords do not match
+    <mat-error
+      *ngIf="
+        signupForm.hasError('notSame') &&
+        signupForm.get('password1')?.dirty &&
+        signupForm.get('password2')?.dirty
+      "
+    >
+      Passwords do not match
     </mat-error>
-
   </form>
 </div>
 
 <div mat-dialog-actions align="center">
-  <button mat-flat-button color="primary" (click)="signUp()" [disabled]="!signupForm.valid">Sign Up</button>
+  <button mat-flat-button color="primary" (click)="signUp()" [disabled]="!signupForm.valid">
+    Sign Up
+  </button>
 </div>

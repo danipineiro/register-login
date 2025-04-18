@@ -9,7 +9,7 @@ on:
 
 jobs:
   pytest:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
 
     services:
       postgres:

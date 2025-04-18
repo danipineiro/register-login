@@ -11,7 +11,17 @@ jobs:
     with:
       ref: ${{ github.ref }}
 
+  prettier:
+    uses: ./.github/workflows/_prettier.yml
+    with:
+      ref: ${{ github.ref }}
+
   test:
     uses: ./.github/workflows/_pytest.yml
+    with:
+      ref: ${{ github.ref }}
+
+  docker_build:
+    uses: ./.github/workflows/_docker-build-check.yml
     with:
       ref: ${{ github.ref }}
