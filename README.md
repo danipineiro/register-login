@@ -56,7 +56,9 @@ Incluye:
 
 Este proyecto utiliza **GitHub Actions** para:
 
-- Verificar el formato del código (Black para Python)
+- Verificar el formato del código:
+  - **Black** para Python
+  - **Prettier** para Angular y TypeScript
 - Ejecutar tests automáticos (Pytest)
 - Validar la build completa del entorno Docker
 - Desplegar automáticamente en producción (opcional)

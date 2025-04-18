@@ -8,8 +8,8 @@ on:
         type: string
 
 jobs:
-  check_code_formatting:
-    runs-on: ubuntu-24.04
+  black:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out the code

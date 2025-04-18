@@ -20,3 +20,8 @@ jobs:
     uses: ./.github/workflows/_pytest.yml
     with:
       ref: ${{ github.ref }}
+
+  docker_build:
+    uses: ./.github/workflows/_docker-build-check.yaml
+    with:
+      ref: ${{ github.ref }}
