@@ -59,4 +59,8 @@ export class AuthService {
   isLogged() {
     return !!localStorage.getItem('access');
   }
+
+  verifyEmail(key: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registration/verify-email/`, { key });
+  }
 }

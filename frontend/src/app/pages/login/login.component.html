@@ -3,7 +3,12 @@
     <form [formGroup]="loginForm">
       <mat-form-field>
         <input matInput placeholder="Email" name="email" formControlName="email" required />
-        <mat-error> Please provide a valid email address </mat-error>
+        @if (
+          loginForm.get('email')?.invalid &&
+          (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+        ) {
+          <mat-error> Please provide a valid email address </mat-error>
+        }
       </mat-form-field>
       <mat-form-field>
         <input
@@ -14,11 +19,17 @@
           formControlName="password"
           required
         />
-        <mat-error> Please provide a valid password </mat-error>
+        @if (
+          loginForm.get('password')?.invalid &&
+          (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+        ) {
+          <mat-error> Please provide a valid password </mat-error>
+        }
       </mat-form-field>
       <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
         Log In
       </button>
+      <a mat-button routerLink="/auth/forgot-password" class="link-button"> Forgot password? </a>
 
       <mat-divider></mat-divider>
 
