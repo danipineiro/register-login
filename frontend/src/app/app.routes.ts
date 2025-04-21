@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { isLoggedGuard } from './core/guards/is-logged.guard';
-import { ConfirmEmailComponent } from './auth/confirm-email/confirm-email.component';
-import { isNotLoggedGuard } from './core/guards/is-not-logged.guard';
+import { authRoutes } from './auth/routes';
 
 export const routes: Routes = [
   {
@@ -13,16 +11,8 @@ export const routes: Routes = [
     title: 'Home',
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [isNotLoggedGuard],
-    title: 'Login page',
-  },
-  {
-    path: 'confirm-email',
-    component: ConfirmEmailComponent,
-    canActivate: [isNotLoggedGuard],
-    title: 'Confirm email',
+    path: 'auth',
+    children: authRoutes,
   },
   {
     path: '**',
