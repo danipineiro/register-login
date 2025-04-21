@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
-import { isLoggedGuard } from './guards/is-logged.guard';
-import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
-import { isNotLoggedGuard } from './guards/is-not-logged.guard';
+import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './home/home.component';
+import { isLoggedGuard } from './core/guards/is-logged.guard';
+import { ConfirmEmailComponent } from './auth/confirm-email/confirm-email.component';
+import { isNotLoggedGuard } from './core/guards/is-not-logged.guard';
 
 export const routes: Routes = [
   {
