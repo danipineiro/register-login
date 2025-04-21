@@ -24,8 +24,8 @@ Incluye:
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/danipineiro/register-login
-    cd register-login
+    git clone https://github.com/danipineiro/fullstack-django-angular
+    cd fullstack-django-angular
     ```
 
 2. Copia el archivo de variables de entorno y edítalo si es necesario:
