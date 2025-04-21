@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from '../../services/auth.service';
 import { LoginResponseDTO } from '../../models/login-response-dto';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -31,6 +31,7 @@ import { NgIf } from '@angular/common';
     MatDivider,
     ReactiveFormsModule,
     NgIf,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

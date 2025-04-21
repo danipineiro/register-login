@@ -23,15 +23,16 @@
         <mat-error
           *ngIf="
             loginForm.get('password')?.invalid &&
-            (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
-          "
-        >
+            (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
           Please provide a valid password
         </mat-error>
       </mat-form-field>
       <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
         Log In
       </button>
+      <a mat-button routerLink="/auth/forgot-password" class="link-button">
+        Forgot password?
+      </a>
 
       <mat-divider></mat-divider>
 
