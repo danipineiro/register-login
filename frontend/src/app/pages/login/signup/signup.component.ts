@@ -21,6 +21,7 @@ import { MatButton } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { RegisterDTO } from '../../../models/register-dto';
 import { AuthService } from '../../../services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-signup',
@@ -45,6 +46,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private notificationService: NotificationService,
     public dialogRef: MatDialogRef<SignupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
@@ -76,13 +78,12 @@ export class SignupComponent implements OnInit {
     console.log(registrationData);
     this.authService.register(registrationData).subscribe({
       next: () => {
-        console.log('User registered');
+        this.notificationService.showSuccess('Please check your email to verify your account');
       },
       error: (error) => {
         console.error('There was an error!', error);
       },
       complete: () => {
-        console.log('Registration completed');
         this.closeDialog();
       },
     });

@@ -16,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthService } from '../../services/auth.service';
 import { LoginResponseDTO } from '../../models/login-response-dto';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatDivider,
     ReactiveFormsModule,
+    NgIf,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

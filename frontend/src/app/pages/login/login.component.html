@@ -3,7 +3,13 @@
     <form [formGroup]="loginForm">
       <mat-form-field>
         <input matInput placeholder="Email" name="email" formControlName="email" required />
-        <mat-error> Please provide a valid email address </mat-error>
+        <mat-error
+          *ngIf="
+            loginForm.get('email')?.invalid &&
+            (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+          "
+          >> Please provide a valid email address
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
@@ -14,7 +20,14 @@
           formControlName="password"
           required
         />
-        <mat-error> Please provide a valid password </mat-error>
+        <mat-error
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+          "
+        >
+          Please provide a valid password
+        </mat-error>
       </mat-form-field>
       <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
         Log In
