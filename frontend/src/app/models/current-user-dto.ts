@@ -1,4 +1,4 @@
-export interface CurrentUser {
+export interface CurrentUserDTO {
   username: string;
   email: string;
   email_verified: boolean;

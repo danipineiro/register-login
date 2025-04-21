@@ -19,9 +19,9 @@ import {
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { NgIf } from '@angular/common';
-import { AuthService } from '../../auth.service';
+import { RegisterDTO } from '../../../models/register-dto';
+import { AuthService } from '../../../services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
-import { RegisterRequest } from '../../auth.model';
 
 @Component({
   selector: 'app-signup',
@@ -74,7 +74,7 @@ export class SignupComponent implements OnInit {
   }
 
   signUp() {
-    const registrationData: RegisterRequest = this.signupForm.value;
+    const registrationData: RegisterDTO = this.signupForm.value;
     console.log(registrationData);
     this.authService.register(registrationData).subscribe({
       next: () => {

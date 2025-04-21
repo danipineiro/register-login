@@ -13,9 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
+import { LoginResponseDTO } from '../../models/login-response-dto';
 import { Router, RouterLink } from '@angular/router';
-import { LoginRequest, LoginResponse } from '../auth.model';
 
 @Component({
   selector: 'app-login',
@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const loginRequest: LoginRequest = this.loginForm.value;
-    this.authService.login(loginRequest).subscribe({
-      next: (response: LoginResponse) => {
+    const loginDTO = this.loginForm.value;
+    this.authService.login(loginDTO).subscribe({
+      next: (response: LoginResponseDTO) => {
         this.authService.setAccessToken(response.access);
         this.authService.setRefreshToken(response.refresh);
         this.router.navigate(['/']);

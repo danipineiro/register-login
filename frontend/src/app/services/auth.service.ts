@@ -1,8 +1,9 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
+import { LoginDTO } from '../models/login-dto';
+import { RegisterDTO } from '../models/register-dto';
 import { environment } from '../../environments/environment';
-import { LoginRequest, RegisterRequest } from './auth.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +15,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(loginDTO: LoginRequest): Observable<any> {
+  login(loginDTO: LoginDTO): Observable<any> {
     return this.http.post(`${this.apiUrl}/login/`, loginDTO);
   }
 
-  register(registerDTO: RegisterRequest): Observable<any> {
+  register(registerDTO: RegisterDTO): Observable<any> {
     return this.http.post(`${this.apiUrl}/registration/`, registerDTO);
   }
 

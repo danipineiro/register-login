@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../../user/user.service';
-import { CurrentUser } from '../../../user/current-user';
+import { UserService } from '../../../services/user.service';
+import { CurrentUserDTO } from '../../../models/current-user-dto';
 import { MatButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
@@ -16,7 +16,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  currentUser: CurrentUser | undefined;
+  currentUser: CurrentUserDTO | undefined;
 
   constructor(
     private authService: AuthService,
@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe({
-      next: (user: CurrentUser) => {
+      next: (user: CurrentUserDTO) => {
         this.currentUser = user;
       },
     });

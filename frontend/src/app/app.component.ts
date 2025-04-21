@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { MenuComponent } from './shared/components/menu/menu.component';
 
 @Component({
