@@ -1,5 +1,7 @@
 # 🧪 Plantilla para aplicaciones fullstack con Django, Angular y Docker
 
+🌐 Leer en: [English](README.md)
+
 Este repositorio es una plantilla lista para usar que integra **Django** (backend) y **Angular con Angular Material** (frontend), todo orquestado con **Docker** y **Docker Compose**. Ideal para iniciar proyectos con autenticación de usuarios ya implementada (registro y login), tareas en segundo plano y una estructura moderna lista para producción.
 
 Incluye:
