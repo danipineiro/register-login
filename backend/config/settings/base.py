@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:4200")
+FRONTEND_URL = os.getenv("FRONTEND_URL")
 
 # Application definition
 
@@ -187,3 +187,5 @@ ACCOUNT_ADAPTER = 'common.adapters.CustomAccountAdapter'
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
