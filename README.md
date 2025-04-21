@@ -1,108 +1,112 @@
-# 🧪 Plantilla para aplicaciones fullstack con Django, Angular y Docker
+# 🧪 Fullstack Template for Django, Angular, and Docker Applications
 
-Este repositorio es una plantilla lista para usar que integra **Django** (backend) y **Angular con Angular Material** (frontend), todo orquestado con **Docker** y **Docker Compose**. Ideal para iniciar proyectos con autenticación de usuarios ya implementada (registro y login), tareas en segundo plano y una estructura moderna lista para producción.
+🌐 Read this in: [Español](README.es.md)
 
-Incluye:
+This repository is a ready-to-use template that integrates **Django** (backend) and **Angular with Angular Material** (frontend), all orchestrated with **Docker** and **Docker Compose**. It's ideal for starting projects with built-in user authentication (registration and login), background tasks, and a modern, production-ready structure.
 
-- 🔧 Backend con Django + Django REST Framework
-- 🎨 Frontend con Angular + Angular Material
-- 🐳 Entorno Dockerizado
-- 🐘 Base de datos PostgreSQL
-- 📬 Cola de tareas con Celery + Redis
-- ✅ Workflows de CI/CD con GitHub Actions
+Includes:
+
+- 🔧 Backend with Django + Django REST Framework
+- 🎨 Frontend with Angular + Angular Material
+- 🐳 Dockerized environment
+- 🐘 PostgreSQL database
+- 📬 Task queue with Celery + Redis
+- ✅ CI/CD workflows with GitHub Actions
 
 ---
 
-## 🚀 Requisitos
+## 🚀 Requirements
 
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ---
 
-## ⚙️ Configuración inicial
+## ⚙️ Initial Setup
 
-1. Clona el repositorio:
+1. Clone the repository:
     ```bash
     git clone https://github.com/danipineiro/fullstack-django-angular
     cd fullstack-django-angular
     ```
 
-2. Copia el archivo de variables de entorno y edítalo si es necesario:
+2. Copy the environment variables file and edit it if needed:
     ```bash
     cp .env.example .env
     ```
 
-3. Construye y levanta los contenedores:
+3. Build and start the containers:
     ```bash
     docker-compose up --build
     ```
 
-4. Accede al frontend en [http://localhost:4200](http://localhost:4200)  
-   El backend estará disponible en [http://localhost:8000](http://localhost:8000)
+4. Access the frontend at [http://localhost:4200](http://localhost:4200)  
+   The backend will be available at [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 🔐 Funcionalidades implementadas
+## 🔐 Implemented Features
 
-- Registro de usuarios
-- Inicio de sesión con autenticación JWT
-- Gestión de sesiones desde el frontend
-- Protección de rutas en Angular
-
----
-
-## ✅ Integración continua
-
-Este proyecto utiliza **GitHub Actions** para:
-
-- Verificar el formato del código:
-  - **Black** para Python
-  - **Prettier** para Angular y TypeScript
-- Ejecutar tests automáticos (Pytest)
-- Validar la build completa del entorno Docker
-- Desplegar automáticamente en producción (opcional)
-
----
-## 🚀 Entrega continua a AWS
-Cuando haces push a la rama master (entorno staging), o creas un tag con formato v* (entorno production), el workflow:
-
-- Verifica el código y tests.
-- Construye la imagen Docker del backend.
-- La sube automáticamente a un repositorio en Amazon ECR.
-
-- Usa etiquetas latest para staging y el nombre del tag para production.
-
-Esto permite tener imágenes preparadas para ser desplegadas automáticamente en un entorno AWS.
-
-> 💡 El workflow usa aws-actions/configure-aws-credentials y amazon-ecr-login para autenticarse y subir la imagen al registro.
+- User registration
+- Login with JWT authentication
+- Session management from the frontend
+- Route protection in Angular
 
 ---
 
-## 📦 Tecnologías
+## ✅ Continuous Integration
 
-| Tecnología            | Uso           |
-|-----------------------|---------------|
-| Django                | Backend       |
-| Django REST Framework | REST API      |
-| Dj-Rest-Auth          | Autenticación |
-| Celery                | Tareas asíncronas         |
-| Redis                 | Cola de mensajes para Celery |
-| Angular               | Frontend SPA  |
-| Angular Material      | UI components |
-| PostgreSQL            | Base de datos |
-| Docker                | Contenedores  |
-| GitHub Actions        | CI/CD         |
+This project uses **GitHub Actions** to:
+
+- Check code formatting:
+  - **Black** for Python
+  - **Prettier** for Angular and TypeScript
+- Run automated tests (Pytest)
+- Validate the full Docker environment build
+- Automatically deploy to production (optional)
 
 ---
 
-## 📄 Licencia
+## 🚀 Continuous Delivery to AWS
 
-Este proyecto está bajo la licencia MIT.  
-Puedes usarlo libremente como base para tus propias apps.
+When you push to the `master` branch (staging environment) or create a tag starting with `v*` (production environment), the workflow will:
+
+- Run code and test validations
+- Build the Docker image for the backend
+- Push it automatically to an Amazon ECR repository
+
+- It uses the `latest` tag for staging and the tag name for production.
+
+This allows for having Docker images ready for automatic deployment in an AWS environment.
+
+> 💡 The workflow uses [`aws-actions/configure-aws-credentials`](https://github.com/aws-actions/configure-aws-credentials) and [`aws-actions/amazon-ecr-login`](https://github.com/aws-actions/amazon-ecr-login) to authenticate and push the image to the container registry.
 
 ---
 
-## 🙌 Autor
+## 📦 Technologies
 
-Creado con cariño desde Galicia por [Daniel Piñeiro](https://www.linkedin.com/in/dpineiro/).
+| Technology            | Purpose                  |
+|-----------------------|---------------------------|
+| Django                | Backend                   |
+| Django REST Framework | REST API                  |
+| Dj-Rest-Auth          | Authentication            |
+| Celery                | Asynchronous tasks        |
+| Redis                 | Message broker for Celery |
+| Angular               | Frontend SPA              |
+| Angular Material      | UI components             |
+| PostgreSQL            | Database                  |
+| Docker                | Containers                |
+| GitHub Actions        | CI/CD                     |
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+You are free to use it as a base for your own apps.
+
+---
+
+## 🙌 Author
+
+Made with ❤️ in Galicia by [Daniel Piñeiro](https://www.linkedin.com/in/dpineiro/).
