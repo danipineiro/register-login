@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:4200")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -181,6 +183,7 @@ REST_AUTH = {
     "JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED": False,
 }
 
+ACCOUNT_ADAPTER = 'common.adapters.CustomAccountAdapter'
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
