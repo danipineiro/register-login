@@ -5,6 +5,7 @@ import { MatFormField, MatError } from '@angular/material/form-field';
 import { MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { NotificationService } from '../../core/services/notification.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-password-reset',
@@ -24,23 +25,28 @@ import { NotificationService } from '../../core/services/notification.service';
   styleUrl: './password-reset.component.scss',
 })
 export class PasswordResetComponent {
-
   forgotPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor(private notification: NotificationService) {}
+  constructor(
+    private notification: NotificationService,
+    private authService: AuthService,
+  ) {}
 
   submit() {
     if (this.forgotPasswordForm.invalid) return;
 
     const email = this.forgotPasswordForm.value.email!;
 
-    // Aquí iría tu llamada real al backend para enviar el email
-    console.log('Reset link sent to:', email);
-
-    this.notification.showSuccess('If that email is registered, a reset link was sent.');
+    this.authService.passwordReset(email).subscribe({
+      next: () => {
+        this.notification.showSuccess('If that email is registered, a reset link was sent.');
+      },
+      error: (error) => {
+        this.notification.showError(error.error.message);
+      },
+    });
     this.forgotPasswordForm.reset();
   }
-
 }
