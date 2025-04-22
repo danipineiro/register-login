@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { isNotLoggedGuard } from '../core/guards/is-not-logged.guard';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordResetConfirmComponent } from './password-reset-confirm/password-reset-confirm.component';
 
 export const authRoutes: Routes = [
   {
@@ -10,6 +11,12 @@ export const authRoutes: Routes = [
     component: LoginComponent,
     canActivate: [isNotLoggedGuard],
     title: 'Login',
+  },
+  {
+    path: 'password/reset/confirm',
+    component: PasswordResetConfirmComponent,
+    canActivate: [isNotLoggedGuard],
+    title: 'Password Reset Confirm',
   },
   {
     path: 'password/reset',
