@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-confirm-email',
@@ -27,7 +27,7 @@ export class ConfirmEmailComponent implements OnInit {
         next: () => {
           this.loading = false;
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error confirming email:', error);
           this.loading = false;
         },
