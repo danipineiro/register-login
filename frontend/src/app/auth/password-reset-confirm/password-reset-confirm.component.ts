@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -40,6 +40,7 @@ export class PasswordResetConfirmComponent implements OnInit {
     private route: ActivatedRoute,
     private notification: NotificationService,
     private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -88,6 +89,7 @@ export class PasswordResetConfirmComponent implements OnInit {
       .subscribe({
         next: () => {
           this.notification.showSuccess('Your password has been reset successfully.');
+          this.router.navigate(['auth//login']);
         },
         error: (error) => {
           this.notification.showError(error.error.message);
