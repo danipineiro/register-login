@@ -3,7 +3,6 @@ from dj_rest_auth.serializers import PasswordResetSerializer
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from allauth.account.forms import default_token_generator
 from allauth.account.utils import user_pk_to_url_str
 
 User = get_user_model()
@@ -20,6 +19,11 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
         return value
 
     def save(self, **kwargs):
+        if "allauth" in settings.INSTALLED_APPS:
+            from allauth.account.forms import default_token_generator
+        else:
+            from django.contrib.auth.tokens import default_token_generator
+
         request = self.context.get("request")
         email = self.data["email"]
         user = User.objects.filter(email__iexact=email).first()
