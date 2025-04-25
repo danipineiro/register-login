@@ -1,6 +1,6 @@
+from dj_rest_auth.registration.views import VerifyEmailView
 from django.contrib import admin
 from django.urls import path, include
-from dj_rest_auth.registration.views import VerifyEmailView
 
 urlpatterns = [
     path("admin/", admin.site.urls),

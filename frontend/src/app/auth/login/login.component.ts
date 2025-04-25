@@ -12,7 +12,6 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
-import { SignupComponent } from './signup/signup.component';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
@@ -61,12 +60,6 @@ export class LoginComponent implements OnInit {
       error: (error) => {
         console.error(error);
       },
-    });
-  }
-
-  openSingUpDialog() {
-    this.dialog.open(SignupComponent, {
-      width: '500px',
     });
   }
 }

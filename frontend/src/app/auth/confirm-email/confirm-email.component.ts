@@ -36,6 +36,6 @@ export class ConfirmEmailComponent implements OnInit {
       console.error('No key provided for email confirmation.');
       this.loading = false;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['auth//login']);
   }
 }

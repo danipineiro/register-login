@@ -29,11 +29,11 @@
       <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
         Log In
       </button>
-      <a mat-button routerLink="/auth/forgot-password" class="link-button"> Forgot password? </a>
+      <a mat-button routerLink="/auth/password/reset" class="link-button"> Forgot password? </a>
 
       <mat-divider></mat-divider>
 
-      <button mat-flat-button color="secondary" (click)="openSingUpDialog()">
+      <button mat-flat-button color="secondary" routerLink="/auth/signup" class="mt-4">
         Create new account
       </button>
     </form>
