@@ -1,12 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatError, MatFormField } from '@angular/material/form-field';
-import {
-  MatDialogActions,
-  MatDialogContent,
-  MatDialogTitle,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import {
   AbstractControl,
   FormControl,
@@ -17,11 +10,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
-import { AuthService } from '../../auth.service';
-import { NotificationService } from '../../../core/services/notification.service';
-import { RegisterRequest } from '../../auth.model';
+import { MatAnchor, MatButton } from '@angular/material/button';
+import { AuthService } from '../auth.service';
+import { NotificationService } from '../../core/services/notification.service';
+import { RegisterRequest } from '../auth.model';
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -29,14 +23,17 @@ import { RegisterRequest } from '../../auth.model';
   imports: [
     MatFormField,
     MatError,
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogTitle,
     FormsModule,
     MatInput,
     MatButton,
     ReactiveFormsModule,
-    NgIf,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardTitle,
+    MatLabel,
+    MatAnchor,
+    RouterLink,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
@@ -47,8 +44,6 @@ export class SignupComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private notificationService: NotificationService,
-    public dialogRef: MatDialogRef<SignupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit() {
@@ -69,22 +64,14 @@ export class SignupComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true };
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
-  }
-
-  signUp() {
+  submit() {
     const registrationData: RegisterRequest = this.signupForm.value;
-    console.log(registrationData);
     this.authService.register(registrationData).subscribe({
       next: () => {
         this.notificationService.showSuccess('Please check your email to verify your account');
       },
       error: (error) => {
-        console.error('There was an error!', error);
-      },
-      complete: () => {
-        this.closeDialog();
+        this.notificationService.showError('An error occurred during registration');
       },
     });
   }
