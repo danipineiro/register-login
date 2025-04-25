@@ -6,6 +6,8 @@ import { MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { NotificationService } from '../../core/services/notification.service';
 import { AuthService } from '../auth.service';
+import { MatDivider } from '@angular/material/divider';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password-reset',
@@ -20,6 +22,8 @@ import { AuthService } from '../auth.service';
     MatButton,
     MatLabel,
     MatError,
+    MatDivider,
+    RouterLink,
   ],
   templateUrl: './password-reset.component.html',
   styleUrl: './password-reset.component.scss',
