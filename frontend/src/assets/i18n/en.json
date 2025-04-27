@@ -1,3 +1,27 @@
 {
-	"Create new account": "Create new account"
+  "Confirm password": "Confirm password",
+  "Create A Strong Password": "Create A Strong Password",
+  "Create new account": "Create new account",
+  "Email": "Email",
+  "Enter your email and we'll send you a link to get back into your account.": "Enter your email and we'll send you a link to get back into your account.",
+  "Have an account ?": "Have an account ?",
+  "Log in": "Log in",
+  "Logout": "Logout",
+  "New password": "New password",
+  "New password, again": "New password, again",
+  "Password is required": "Password is required",
+  "Passwords do not match": "Passwords do not match",
+  "Please enter a valid email": "Please enter a valid email",
+  "Please enter a valid username": "Please enter a valid username",
+  "Please provide a valid email address": "Please provide a valid email address",
+  "Please provide a valid password": "Please provide a valid password",
+  "Remembered your password ?": "Remembered your password ?",
+  "Reset password": "Reset password",
+  "Send login link": "Send login link",
+  "Settings": "Settings",
+  "Sign up to use the app": "Sign up to use the app",
+  "Trouble logging in ?": "Trouble logging in ?",
+  "Username": "Username",
+  "Verifying your email address...": "Verifying your email address...",
+  "Your password must be at least 6 characters and should include a combination of numbers,letters and special characters(!$ %).": "Your password must be at least 6 characters and should include a combination of numbers,letters and special characters(!$ %)."
 }

@@ -1,3 +1,27 @@
 {
-	"Create new account": "TODO"
+  "Confirm password": "Confirmar contraseña",
+  "Create A Strong Password": "Crea una contraseña segura",
+  "Create new account": "Crear nueva cuenta",
+  "Email": "Correo electrónico",
+  "Enter your email and we'll send you a link to get back into your account.": "Introduce tu correo electrónico y te enviaremos un enlace para volver a acceder a tu cuenta.",
+  "Have an account ?": "¿Tienes una cuenta?",
+  "Log in": "Iniciar sesión",
+  "Logout": "Cerrar sesión",
+  "New password": "Nueva contraseña",
+  "New password, again": "Nueva contraseña, otra vez",
+  "Password is required": "La contraseña es obligatoria",
+  "Passwords do not match": "Las contraseñas no coinciden",
+  "Please enter a valid email": "Por favor, introduce un correo electrónico válido",
+  "Please enter a valid username": "Por favor, introduce un nombre de usuario válido",
+  "Please provide a valid email address": "Por favor, proporciona una dirección de correo electrónico válida",
+  "Please provide a valid password": "Por favor, proporciona una contraseña válida",
+  "Remembered your password ?": "¿Has recordado tu contraseña?",
+  "Reset password": "Restablecer contraseña",
+  "Send login link": "Enviar enlace de acceso",
+  "Settings": "Configuración",
+  "Sign up to use the app": "Regístrate para usar la aplicación",
+  "Trouble logging in ?": "¿Problemas para iniciar sesión?",
+  "Username": "Nombre de usuario",
+  "Verifying your email address...": "Verificando tu dirección de correo electrónico...",
+  "Your password must be at least 6 characters and should include a combination of numbers,letters and special characters(!$ %).": "Tu contraseña debe tener al menos 6 caracteres e incluir una combinación de números, letras y caracteres especiales (!$ %)."
 }

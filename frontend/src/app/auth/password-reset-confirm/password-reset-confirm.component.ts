@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification.service';
 import { AuthService } from '../auth.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-password-reset-confirm',
@@ -28,6 +29,7 @@ import { AuthService } from '../auth.service';
     MatInput,
     MatLabel,
     ReactiveFormsModule,
+    TranslatePipe,
   ],
   templateUrl: './password-reset-confirm.component.html',
   styleUrl: './password-reset-confirm.component.scss',

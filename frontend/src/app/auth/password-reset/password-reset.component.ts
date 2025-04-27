@@ -8,6 +8,7 @@ import { NotificationService } from '../../core/services/notification.service';
 import { AuthService } from '../auth.service';
 import { MatDivider } from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-password-reset',
@@ -24,6 +25,7 @@ import { RouterLink } from '@angular/router';
     MatError,
     MatDivider,
     RouterLink,
+    TranslatePipe,
   ],
   templateUrl: './password-reset.component.html',
   styleUrl: './password-reset.component.scss',

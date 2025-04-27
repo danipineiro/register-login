@@ -7,11 +7,12 @@ import { UserService } from '../../../user/user.service';
 import { CurrentUser } from '../../../user/current-user';
 import { MatButton } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatIcon, MatToolbar, MatButton, MatMenuTrigger, MatMenu, MatMenuItem],
+  imports: [MatIcon, MatToolbar, MatButton, MatMenuTrigger, MatMenu, MatMenuItem, TranslatePipe],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

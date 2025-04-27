@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    @Inject(TranslateService) private translate: TranslateService
+    @Inject(TranslateService) private translate: TranslateService,
   ) {
     this.translate.setDefaultLang('en');
   }
