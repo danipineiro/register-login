@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-confirm-email',
   standalone: true,
-  imports: [MatProgressSpinner],
+  imports: [MatProgressSpinner, TranslatePipe],
   templateUrl: './confirm-email.component.html',
   styleUrl: './confirm-email.component.scss',
 })

@@ -16,6 +16,7 @@ import { NotificationService } from '../../core/services/notification.service';
 import { RegisterRequest } from '../auth.model';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
@@ -34,6 +35,7 @@ import { RouterLink } from '@angular/router';
     MatLabel,
     MatAnchor,
     RouterLink,
+    TranslatePipe,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',

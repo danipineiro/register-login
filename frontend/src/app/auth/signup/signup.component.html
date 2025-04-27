@@ -1,28 +1,30 @@
 <mat-card>
   <mat-card-header class="centered-header">
-    <mat-card-title class="centered-title">Sign up to use the app</mat-card-title>
+    <mat-card-title class="centered-title">{{
+      'Sign up to use the app' | translate
+    }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="signupForm" (ngSubmit)="submit()">
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Email</mat-label>
+        <mat-label>{{ 'Email' | translate }}</mat-label>
         <input matInput formControlName="email" type="email" required />
         @if (
           signupForm.get('email')?.invalid &&
           (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)
         ) {
-          <mat-error>Please enter a valid email</mat-error>
+          <mat-error>{{ 'Please enter a valid email' | translate }}</mat-error>
         }
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Username</mat-label>
+        <mat-label>{{ 'Username' | translate }}</mat-label>
         <input matInput formControlName="username" type="text" required />
         @if (
           signupForm.get('username')?.invalid &&
           (signupForm.get('username')?.touched || signupForm.get('username')?.dirty)
         ) {
-          <mat-error>Please enter a valid username</mat-error>
+          <mat-error>{{ 'Please enter a valid username' | translate }}</mat-error>
         }
       </mat-form-field>
 
@@ -33,18 +35,18 @@
           signupForm.get('password1')?.invalid &&
           (signupForm.get('password1')?.touched || signupForm.get('password1')?.dirty)
         ) {
-          <mat-error>Password is required</mat-error>
+          <mat-error>{{ 'Password is required' | translate }}</mat-error>
         }
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Confirm password</mat-label>
+        <mat-label>{{ 'Confirm password' | translate }}</mat-label>
         <input matInput formControlName="password2" type="password" required />
         @if (
           signupForm.get('password2')?.invalid &&
           (signupForm.get('password2')?.touched || signupForm.get('password2')?.dirty)
         ) {
-          <mat-error>Password is required</mat-error>
+          <mat-error>{{ 'Password is required' | translate }}</mat-error>
         }
       </mat-form-field>
 
@@ -53,7 +55,7 @@
         signupForm.get('password1')?.dirty &&
         signupForm.get('password2')?.dirty
       ) {
-        <mat-error> Passwords do not match</mat-error>
+        <mat-error> {{ 'Passwords do not match' | translate }}</mat-error>
       }
 
       <button
@@ -63,7 +65,7 @@
         type="submit"
         [disabled]="signupForm.invalid"
       >
-        Send login link
+        {{ 'Send login link' | translate }}
       </button>
     </form>
   </mat-card-content>
@@ -71,9 +73,9 @@
 
 <mat-card>
   <mat-card-content>
-    <p>Have an account?</p>
+    <p>{{ 'Have an account ?' | translate }}</p>
     <p>
-      <a mat-button routerLink="/auth/login" class="link-button"> Log in </a>
+      <a mat-button routerLink="/auth/login" class="link-button"> {{ 'Log in' | translate }} </a>
     </p>
   </mat-card-content>
 </mat-card>

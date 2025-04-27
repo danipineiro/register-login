@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "extract:en": "ngx-translate-extract --input \"src/app/**/*.{ts,html}\" --output \"src/assets/i18n/en.json\" --clean --sort --format json --key-as-default-value",
+    "extract:rest": "ngx-translate-extract --input \"src/app/**/*.{ts,html}\" --output \"src/assets/i18n/es.json\" --clean --sort --format json --string-as-default-value \"TODO\"",
+    "extract-all": "npm run extract:en && npm run extract:rest"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +25,8 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.15.0"
@@ -31,6 +36,7 @@
     "@angular/cli": "^19.2.0",
     "@angular/compiler-cli": "^19.2.0",
     "@types/jasmine": "~5.1.4",
+    "@vendure/ngx-translate-extract": "^9.4.0",
     "jasmine-core": "~5.1.2",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",

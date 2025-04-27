@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ import { LoginRequest, LoginResponse } from '../auth.model';
     MatDivider,
     ReactiveFormsModule,
     RouterLink,
+    TranslatePipe,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
