@@ -11,11 +11,11 @@ import {
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
-import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -31,17 +31,19 @@ import { TranslatePipe } from '@ngx-translate/core';
     ReactiveFormsModule,
     RouterLink,
     TranslatePipe,
+    GoogleSigninButtonDirective,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  user: SocialUser | null = null;
 
   constructor(
-    public dialog: MatDialog,
     private authService: AuthService,
     private router: Router,
+    private socialAuthService: SocialAuthService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,17 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
+
+    this.socialAuthService.authState.subscribe((user: SocialUser | null) => {
+      if (user) {
+        console.log('Google user:', user);
+        const idToken = user.idToken;
+
+        // Aquí haces POST a tu backend con el idToken
+        // this.http.post('/api/social-login/', { token: idToken }).subscribe(...)
+      }
+    });
+
   }
 
   login() {
