@@ -15,7 +15,11 @@ import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
-import { GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import {
+  GoogleSigninButtonDirective,
+  SocialAuthService,
+  SocialUser,
+} from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 

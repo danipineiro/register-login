@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites'
+    "django.contrib.sites",
 ]
 
 THIRD_PARTY_APPS = [
@@ -193,15 +193,5 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': os.environ.get("GOOGLE_CLIENT_ID", ""),
-            'secret': os.environ.get("GOOGLE_CLIENT_SECRET'", ""),
-            'key': ''
-        }
-    }
-}
-
-GOOGLE_CLIENT_ID=os.environ.get("GOOGLE_CLIENT_ID", "")
-GOOGLE_CLIENT_SECRET=os.environ.get("GOOGLE_CLIENT_SECRET", "")
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "")
