@@ -18,6 +18,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login/`, loginDTO);
   }
 
+  loginWithGoogle(id_token: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/google/`, { id_token });
+  }
+
   register(registerDTO: RegisterRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/registration/`, registerDTO);
   }

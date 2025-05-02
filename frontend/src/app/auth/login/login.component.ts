@@ -54,41 +54,45 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initLoginForm();
+    this.subscribeToGoogleAuth();
+  }
+
+  private initLoginForm(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
-    });
-
-    this.socialAuthService.authState.subscribe((user: SocialUser | null) => {
-      if (user) {
-        console.log('Google user:', user);
-        const idToken = user.idToken;
-
-        this.http
-          .post<any>(`${environment.host}/auth/google/`, {
-            id_token: idToken,
-          })
-          .subscribe((res) => {
-            console.log('res', res);
-            // localStorage.setItem('access', res.access);
-            // localStorage.setItem('refresh', res.refresh);
-            // Puedes guardar usuario, redirigir, etc.
-          });
-      }
     });
   }
 
   login() {
     const loginRequest: LoginRequest = this.loginForm.value;
     this.authService.login(loginRequest).subscribe({
-      next: (response: LoginResponse) => {
-        this.authService.setAccessToken(response.access);
-        this.authService.setRefreshToken(response.refresh);
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error(error);
-      },
+      next: (res) => this.handleLoginSuccess(res),
+      error: (err) => this.handleError(err),
     });
+  }
+
+  private subscribeToGoogleAuth(): void {
+    this.socialAuthService.authState.subscribe((user: SocialUser | null) => {
+      if (user) this.handleGoogleLogin(user.idToken);
+    });
+  }
+
+  private handleGoogleLogin(idToken: string): void {
+    this.authService.loginWithGoogle(idToken).subscribe({
+      next: (res) => this.handleLoginSuccess(res),
+      error: (err) => this.handleError(err),
+    });
+  }
+
+  private handleLoginSuccess(response: LoginResponse): void {
+    this.authService.setAccessToken(response.access);
+    this.authService.setRefreshToken(response.refresh);
+    this.router.navigate(['/']);
+  }
+
+  private handleError(error: any): void {
+    console.error('Login error:', error);
   }
 }

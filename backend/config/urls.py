@@ -13,5 +13,5 @@ urlpatterns = [
         VerifyEmailView.as_view(),
         name="account_confirm_email",
     ),
-    path("auth/google/", GoogleLoginAPIView.as_view(), name="google-login"),
+    path("api/v1/auth/google/", GoogleLoginAPIView.as_view(), name="google-login"),
 ]
