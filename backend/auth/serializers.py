@@ -1,9 +1,10 @@
 from allauth.account.utils import get_user_model
+from allauth.account.utils import user_pk_to_url_str
 from dj_rest_auth.serializers import PasswordResetSerializer
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from allauth.account.utils import user_pk_to_url_str
+from rest_framework import serializers
 
 User = get_user_model()
 
@@ -46,3 +47,7 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
             )
 
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+
+
+class GoogleLoginSerializer(serializers.Serializer):
+    id_token = serializers.CharField(required=True)

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites'
 ]
 
 THIRD_PARTY_APPS = [
@@ -47,9 +48,9 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "corsheaders",
     "dj_rest_auth",
+    "dj_rest_auth.registration",
     "allauth",
     "allauth.account",
-    "dj_rest_auth.registration",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
 ]
@@ -57,6 +58,8 @@ THIRD_PARTY_APPS = [
 USER_APPS = ["common", "user"]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + USER_APPS
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -189,3 +192,16 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ.get("GOOGLE_CLIENT_ID", ""),
+            'secret': os.environ.get("GOOGLE_CLIENT_SECRET'", ""),
+            'key': ''
+        }
+    }
+}
+
+GOOGLE_CLIENT_ID=os.environ.get("GOOGLE_CLIENT_ID", "")
+GOOGLE_CLIENT_SECRET=os.environ.get("GOOGLE_CLIENT_SECRET", "")

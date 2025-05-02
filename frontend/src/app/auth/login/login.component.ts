@@ -16,6 +16,8 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
 import { GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +45,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -57,11 +60,18 @@ export class LoginComponent implements OnInit {
         console.log('Google user:', user);
         const idToken = user.idToken;
 
-        // Aquí haces POST a tu backend con el idToken
-        // this.http.post('/api/social-login/', { token: idToken }).subscribe(...)
+        this.http
+          .post<any>(`${environment.host}/auth/google/`, {
+            id_token: idToken,
+          })
+          .subscribe((res) => {
+            console.log('res', res);
+            // localStorage.setItem('access', res.access);
+            // localStorage.setItem('refresh', res.refresh);
+            // Puedes guardar usuario, redirigir, etc.
+          });
       }
     });
-
   }
 
   login() {
