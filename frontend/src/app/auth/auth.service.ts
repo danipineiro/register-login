@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { LoginRequest, RegisterRequest } from './auth.model';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,10 @@ export class AuthService {
 
   loggedChanged$ = new EventEmitter<boolean>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private socialAuthService: SocialAuthService,
+  ) {}
 
   login(loginDTO: LoginRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/login/`, loginDTO);
@@ -27,6 +31,8 @@ export class AuthService {
   }
 
   logout() {
+    this.socialAuthService.signOut().catch(() => {});
+
     localStorage.removeItem('access');
     localStorage.removeItem('refresh');
     localStorage.removeItem('currentUser');
