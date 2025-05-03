@@ -46,7 +46,7 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
                 "account/email/password_reset_key_message.html", context
             )
 
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email,])
 
 
 class GoogleLoginSerializer(serializers.Serializer):

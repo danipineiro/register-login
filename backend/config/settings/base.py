@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.sites",
 ]
 
 THIRD_PARTY_APPS = [
@@ -58,8 +57,6 @@ THIRD_PARTY_APPS = [
 USER_APPS = ["common", "user"]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + USER_APPS
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",

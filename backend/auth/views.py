@@ -42,6 +42,7 @@ class GoogleLoginAPIView(APIView):
 
             user_data = {
                 "email_verified": idinfo.get("email_verified", False),
+                "social_login_google": True,
                 "username": email,
             }
 
