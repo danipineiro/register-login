@@ -8,3 +8,4 @@ celery==5.5.1
 redis==5.2.1
 django-cors-headers==4.7.0
 dj-rest-auth[with_social]==7.0.1
+google-auth>=2.0.0

@@ -10,6 +10,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimeStampedModel):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     email_verified = models.BooleanField(default=False)
+    social_login_google = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 

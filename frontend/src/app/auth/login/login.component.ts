@@ -11,11 +11,17 @@ import {
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
-import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest, LoginResponse } from '../auth.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import {
+  GoogleSigninButtonDirective,
+  SocialAuthService,
+  SocialUser,
+} from '@abacritt/angularx-social-login';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -31,20 +37,28 @@ import { TranslatePipe } from '@ngx-translate/core';
     ReactiveFormsModule,
     RouterLink,
     TranslatePipe,
+    GoogleSigninButtonDirective,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  user: SocialUser | null = null;
 
   constructor(
-    public dialog: MatDialog,
     private authService: AuthService,
     private router: Router,
+    private socialAuthService: SocialAuthService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
+    this.initLoginForm();
+    this.subscribeToGoogleAuth();
+  }
+
+  private initLoginForm(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -54,14 +68,31 @@ export class LoginComponent implements OnInit {
   login() {
     const loginRequest: LoginRequest = this.loginForm.value;
     this.authService.login(loginRequest).subscribe({
-      next: (response: LoginResponse) => {
-        this.authService.setAccessToken(response.access);
-        this.authService.setRefreshToken(response.refresh);
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error(error);
-      },
+      next: (res) => this.handleLoginSuccess(res),
+      error: (err) => this.handleError(err),
     });
+  }
+
+  private subscribeToGoogleAuth(): void {
+    this.socialAuthService.authState.subscribe((user: SocialUser | null) => {
+      if (user) this.handleGoogleLogin(user.idToken);
+    });
+  }
+
+  private handleGoogleLogin(idToken: string): void {
+    this.authService.loginWithGoogle(idToken).subscribe({
+      next: (res) => this.handleLoginSuccess(res),
+      error: (err) => this.handleError(err),
+    });
+  }
+
+  private handleLoginSuccess(response: LoginResponse): void {
+    this.authService.setAccessToken(response.access);
+    this.authService.setRefreshToken(response.refresh);
+    this.router.navigate(['/']);
+  }
+
+  private handleError(error: any): void {
+    console.error('Login error:', error);
   }
 }

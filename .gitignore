@@ -115,6 +115,7 @@ dmypy.json
 
 postgres-data/
 
+# Node.js
 frontend/node_modules/
 frontend/dist/
 frontend/.angular/

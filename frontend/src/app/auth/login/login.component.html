@@ -7,7 +7,7 @@
           loginForm.get('email')?.invalid &&
           (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
         ) {
-          <mat-error> {{ 'Please provide a valid email address' | translate }} </mat-error>
+          <mat-error> {{ 'Please provide a valid email address' | translate }}</mat-error>
         }
       </mat-form-field>
       <mat-form-field>
@@ -23,12 +23,15 @@
           loginForm.get('password')?.invalid &&
           (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
         ) {
-          <mat-error> {{ 'Please provide a valid password' | translate }} </mat-error>
+          <mat-error> {{ 'Please provide a valid password' | translate }}</mat-error>
         }
       </mat-form-field>
       <button mat-flat-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
-        Log In
+        Log in
       </button>
+
+      <asl-google-signin-button type="standard" size="medium"> </asl-google-signin-button>
+
       <a mat-button routerLink="/auth/password/reset" class="link-button"> Forgot password? </a>
 
       <mat-divider></mat-divider>
