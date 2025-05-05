@@ -92,4 +92,12 @@ export class AuthService {
       new_password2: newPassword2,
     });
   }
+
+  changePassword(oldPassword: string, newPassword1: string, newPassword2: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/password/change/`, {
+      old_password: oldPassword,
+      new_password1: newPassword1,
+      new_password2: newPassword2,
+    });
+  }
 }

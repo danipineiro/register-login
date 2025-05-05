@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslatePipe } from '@ngx-translate/core';
+import { AuthService } from '../../auth/auth.service';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
   selector: 'app-change-password',
@@ -27,6 +29,12 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './change-password.component.scss',
 })
 export class ChangePasswordComponent {
+  constructor(
+    private fb: FormBuilder,
+    private auhthService: AuthService,
+    private notification: NotificationService,
+  ) {}
+
   passwordMatchValidator: ValidatorFn = (group: AbstractControl): { [key: string]: any } | null => {
     const password1 = group.get('new_password1')?.value;
     const password2 = group.get('new_password2')?.value;
@@ -42,13 +50,20 @@ export class ChangePasswordComponent {
     { validators: this.passwordMatchValidator },
   );
 
-  constructor(private fb: FormBuilder) {}
-
   onSubmit() {
-    if (this.form.valid) {
-      const { old_password, new_password1, new_password2 } = this.form.value;
-      // Aquí puedes emitir el cambio de contraseña o hacer una petición HTTP
-      console.log('Submit', { old_password, new_password1, new_password2 });
-    }
+    if (this.form.invalid) return;
+
+    const oldPassword = this.form.value.old_password!;
+    const newPassword1 = this.form.value.new_password1!;
+    const newPassword2 = this.form.value.new_password2!;
+
+    this.auhthService.changePassword(oldPassword, newPassword1, newPassword2).subscribe({
+      next: () => {
+        this.notification.showSuccess('Your password has been reset successfully.');
+      },
+      error: (error) => {
+        this.notification.showError(error.error.message);
+      },
+    });
   }
 }
