@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +27,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './change-password.component.scss',
 })
 export class ChangePasswordComponent {
-    passwordMatchValidator: ValidatorFn = (group: AbstractControl): { [key: string]: any } | null => {
+  passwordMatchValidator: ValidatorFn = (group: AbstractControl): { [key: string]: any } | null => {
     const password1 = group.get('new_password1')?.value;
     const password2 = group.get('new_password2')?.value;
     return password1 === password2 ? null : { notSame: true };
@@ -45,5 +51,4 @@ export class ChangePasswordComponent {
       console.log('Submit', { old_password, new_password1, new_password2 });
     }
   }
-
 }
