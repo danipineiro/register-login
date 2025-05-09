@@ -26,9 +26,17 @@ jobs:
     with:
       ref: ${{ github.ref }}
 
+  approve-deploy:
+    needs: [ black, test, prettier ]
+    runs-on: ubuntu-latest
+    environment:
+      name: deploy-approval
+    steps:
+      - run: echo "Waiting for approval to deploy..."
+
   deploy:
-    needs: [black, test, prettier]
-    runs-on: ubuntu-20.04
+    needs: approve-deploy
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
